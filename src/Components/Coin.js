@@ -8,7 +8,7 @@ const Image = styled.img`
 const Coin = props =>{
   return(
     <>
-      <Image src={props.coinSide}/>
+      <Image src={props.coinSide.url} alt={props.coinSide.alt}/>
     </>
   )
 }

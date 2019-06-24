@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import Coin from './Coin'
-import { Button } from 'reactstrap'
+import styled from 'styled-components'
+
+const Button = styled.button`
+  text-align: center;
+  font-weight: bold;
+  font-size: 1em;
+  border-radius: 10%;
+`
 
 class Manager extends Component{
   static defaultProps = {
-    heads: "https://tinyurl.com/react-coin-heads-jpg",
-    tails: "https://tinyurl.com/react-coin-tails-jpg"
+    heads: {url:"https://tinyurl.com/react-coin-heads-jpg", alt: "heads"},
+    tails: {url:"https://tinyurl.com/react-coin-tails-jpg", alt: "tails"}
   }
 
   state={
@@ -36,8 +43,10 @@ class Manager extends Component{
         {this.state.side ? <Coin coinSide={this.state.side} /> : ""}
         <br />
         <Button onClick={this.handleClick}>Flip It</Button>
-        <h3>The Coin has been flipped {this.state.numberFlips}.</h3>
-        <h3>We have gotten heads {this.state.timesHead} times and have gotten tails {this.state.timesTail} times.</h3>
+        <h3>The Coin has been flipped {this.state.numberFlips} times.</h3>
+        <h3>We have gotten heads {this.state.timesHead} times and have tails {this.state.timesTail} times.</h3>
+        {this.state.numberFlips !== 0 ? <h4>Heads: {((this.state.timesHead/this.state.numberFlips)*100).toFixed()}% <br/> Tails: {((this.state.timesTail/this.state.numberFlips)*100).toFixed()}%</h4> : ""}
+
       </div>
     )
   }
