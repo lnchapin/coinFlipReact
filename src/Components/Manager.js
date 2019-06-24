@@ -32,7 +32,7 @@ class Manager extends Component{
     }))
   }
 
-  handleClick=()=>{
+  handleClick=(e)=>{
     this.generateSide()
   }
 
@@ -40,7 +40,7 @@ class Manager extends Component{
     return(
       <div>
         <h2>Let's flip a coin</h2>
-        {this.state.side ? <Coin coinSide={this.state.side} /> : ""}
+        {this.state.side && <Coin coinSide={this.state.side} />}
         <br />
         <Button onClick={this.handleClick}>Flip It</Button>
         <h3>The Coin has been flipped {this.state.numberFlips} times.</h3>
